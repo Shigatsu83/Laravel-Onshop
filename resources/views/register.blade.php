@@ -29,7 +29,7 @@
             </div>
 
             <div class="flex items-center text-center content-center h-10 borlder-solid border-2 rounded-md">
-              <span class=""><ion-icon name="logo-google"></ion-icon></span>
+              <img class="w-7 h-7 pl-2" src="{{ asset('gambar/googlelogo.svg') }}" alt="">
               <a href="{{Route('google.login')}}" class="inline-block w-full"><span>Google</a>
             </div>
           </div>

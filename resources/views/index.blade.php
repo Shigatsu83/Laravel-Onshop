@@ -43,12 +43,14 @@
 
         <div class="flex text-center items-center content-center w-full border-solid border-2 border-slate-100 rounded-lg">
             <ion-icon name="search-outline" class="px-4"></ion-icon>
-            <input type="text" placeholder="Search.." class="w-full h-full py-1 px-1">
+            <input type="text" placeholder="Search.." class="w-full h-full py-1 px-1 outline">
         </div>
         <div class="flex gap-5 items-center content-center text-lg">
             <a href="#" class="w-8 h-8 mr-8"><ion-icon class="h-full w-full" name="cart-outline"></ion-icon></a>
-            <a href="#"class="ring-1 ring-blue-500 ring-offset-4 rounded-sm py-1 px-2 text-blue-500">Masuk</a>
-            <a href="{{route('reg.page')}}" class="bg-blue-500 text-white rounded-sm py-2 px-4 ">Daftar</a>
+            @if (!Auth::check())
+                <a href="#"class="ring-1 ring-blue-500 ring-offset-4 rounded-sm py-1 px-2 text-blue-500">Masuk</a>
+                <a href="{{Route('reg')}}" class="bg-blue-500 text-white rounded-sm py-2 px-4 ">Daftar</a>
+            @endif
         </div>
     </nav>
 
