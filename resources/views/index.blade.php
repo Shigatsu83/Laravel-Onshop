@@ -46,15 +46,13 @@
             <input type="text" placeholder="Search.." class="w-full h-full py-1 px-1 border-transparent">
         </div>
         <div class="flex gap-5 items-center content-center text-lg">
-            <a href="#" class="w-8 h-8 mr-8"><ion-icon class="h-full w-full" name="cart-outline"></ion-icon></a>
+            <a href="{{Route('cart.list')}}" class="w-8 h-8 mr-8"><ion-icon class="h-full w-full" name="cart-outline"></ion-icon></a>
             @if (!Auth::check())
                 <a href="#"class="ring-1 ring-blue-500 ring-offset-4 rounded-sm py-1 px-2 text-blue-500">Masuk</a>
                 <a href="{{Route('reg')}}" class="bg-blue-500 text-white rounded-sm py-2 px-4 ">Daftar</a>
             @endif
         </div>
     </nav>
-
-    
 
     <main class="mt-24">
         <div class="max-w-6xl mx-auto relative overflow-hidden" x-data="{
@@ -112,10 +110,24 @@
         <div class="max-w-6xl mx-auto h-96 mt-8">
             <span class="font-semibold text-2xl pl-4">Khusus Kamu Pengguna Baru</span>
             <div class="flex w-full justify-evenly mt-4 p-4 gap-4">
-                <div class="bg-slate-500 w-full h-80 rounded-lg">card 0</div>
-                <div class="bg-slate-500 w-full h-80 rounded-lg">card 0</div>
-                <div class="bg-slate-500 w-full h-80 rounded-lg">card 0</div>
-                <div class="bg-slate-500 w-full h-80 rounded-lg">card 0</div>
+                @foreach ($products as $pd)
+                <div class="bg-slate-500 w-full h-80 rounded-lg">
+                    <img src="{{url($pd->image)}}" alt="">
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">{{ $pd->product_name }}</h3>
+                        <span class="mt-2 text-black">${{ $pd->prices }}</span>
+                        <form action="{{Route('cart.store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" value="{{ $pd->id }}" name="id">
+                            <input type="hidden" value="{{ $pd->product_name }}" name="name">
+                            <input type="hidden" value="{{ $pd->prices }}" name="price">
+                            <input type="hidden" value="{{ $pd->image }}"  name="image">
+                            <input type="hidden" value="1" name="quantity">
+                            <button class="px-4 py-2 text-white bg-blue-800 rounded">Add To Cart</button>
+                        </form>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </main>
