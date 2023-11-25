@@ -171,6 +171,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ])->toArray(),
 
     /*
