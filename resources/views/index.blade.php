@@ -60,9 +60,9 @@
             slides: [
                 {id: 1, title: 'Helo 1', image: 'bg.jpeg'},
                 {id: 2, title: 'Helo 2', image: 'console.jpg'},
-                {id: 3, title: 'Helo 3', body: 'ini bukan tas'},
-                {id: 4, title: 'Helo 4', body: 'ini bukan XBOX'},
-                {id: 5, title: 'Helo 5', body: 'ini bukan TV'},
+                {id: 3, title: 'Helo 3', image: 'stikps.jpg'},
+                {id: 4, title: 'Helo 4', image: 'shoes.jpg'},
+                {id: 5, title: 'Helo 5', image: 'tv.jpg'},
             ],
             loop(){
                 setInterval(() => {this.activeSlide = this.activeSlide === 5 ? 1 : this.activeSlide + 1}, 4000)
@@ -72,7 +72,7 @@
         >
             {{-- Data Loop --}}
             <template x-for="slide in slides" :key="slide.id">
-                <div x-show="activeSlide === slide.id" class="w-full h-[25rem] flex items-center bg-slate-500 text-white rounded-2xl shadow-lg overflow-hidden">
+                <div x-show="activeSlide === slide.id" class="w-full h-[25rem] flex items-center rounded-lg bg-slate-500 text-white rounded-2xl shadow-lg overflow-hidden">
                     <div class="h-full w-full">
                         <img class="object-cover h-full w-full" :src="'gambar/' + slide.image">
                     </div>
@@ -84,19 +84,19 @@
                 <div class="flex items-center justify-start w-1/2">
                     <button
                     x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1"
-                    class="bg-transparent text-slate-600 font-bold rounded-full w-12 h-12 flex justify-center items-center hover:text-white"><ion-icon name="arrow-back-outline" ></ion-icon></button>
+                    class="bg-transparent text-slate-300 font-bold rounded-full w-12 h-12 flex justify-center items-center hover:text-white"><ion-icon name="arrow-back-outline" ></ion-icon></button>
                 </div>
                 <div class="flex items-center justify-end w-1/2">
                     <button 
                     x-on:click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1"
-                    class="bg-transparent text-slate-600 font-bold rounded-full w-12 h-12 flex justify-center items-center hover:text-white"><ion-icon name="arrow-forward-outline"></ion-icon></button>
+                    class="bg-transparent text-slate-300 font-bold rounded-full w-12 h-12 flex justify-center items-center hover:text-white"><ion-icon name="arrow-forward-outline"></ion-icon></button>
                 </div>
             </div>
         </div>
 
-        <div class="max-w-6xl mx-auto h-96 mt-8">
+        <div class="max-w-6xl mx-auto h-96 mt-8 border-solid border-y-2 border-slate-100">
             <span class="font-semibold text-2xl pl-4">Khusus Kamu Pengguna Baru</span>
-            <div class="flex w-full mt-4 p-4 gap-4">
+            <div class="flex w-full mt-4 p-4 gap-4 h-[20rem]">
                 @foreach ($products as $pd)
                 <div class="w-58 rounded-lg flex flex-col items-center border-solid border-2 shadow-lg">
                     <div class="w-[10rem] h-[10rem] overflow-hidden justify-center flex rounded-t-lg">
