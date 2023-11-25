@@ -55,7 +55,7 @@
     </nav>
 
     <main class="mt-24">
-        <div class="max-w-6xl mx-auto relative overflow-hidden" x-data="{
+        <div class="max-w-6xl mx-auto relative overflow-hidden shadow-lg bg-white shadow-lg" x-data="{
             activeSlide:1,
             slides: [
                 {id: 1, title: 'Helo 1', image: 'bg.jpeg'},
@@ -65,22 +65,22 @@
                 {id: 5, title: 'Helo 5', body: 'ini bukan TV'},
             ],
             loop(){
-                setInterval(() => {this.activeSlide = this.activeSlide === 5 ? 1 : this.activeSlide + 1}, 3000)
+                setInterval(() => {this.activeSlide = this.activeSlide === 5 ? 1 : this.activeSlide + 1}, 4000)
             }
         }"
         x-init="loop"
         >
             {{-- Data Loop --}}
             <template x-for="slide in slides" :key="slide.id">
-                <div x-show="activeSlide === slide.id" class="h-96 flex items-center bg-slate-500 text-white rounded-2xl overflow-hidden">
-                    <div>
-                        <img class="object-top" :src="'gambar/' + slide.image">
+                <div x-show="activeSlide === slide.id" class="w-full h-[25rem] flex items-center bg-slate-500 text-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-full w-full">
+                        <img class="object-cover h-full w-full" :src="'gambar/' + slide.image">
                     </div>
                 </div>
             </template>
 
             {{-- Back/Next --}}
-            <div class="absolute inset-0 flex">
+            <div class="absolute inset-0 flex overflow-hidden">
                 <div class="flex items-center justify-start w-1/2">
                     <button
                     x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1"
@@ -92,28 +92,17 @@
                     class="bg-transparent text-slate-600 font-bold rounded-full w-12 h-12 flex justify-center items-center hover:text-white"><ion-icon name="arrow-forward-outline"></ion-icon></button>
                 </div>
             </div>
-
-            {{-- Buttons --}}
-            <div class="absolute w-full flex items-center justify-center px-4 py-4">
-                <template x-for="slide in slides" :key="slide.id">
-                    <button class="flex-1 w-4 h-2 mt-4 mx-2 mb-2 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-slate-600 hover:shadow-lg"
-                    :class="{
-                        'bg-compbiru': activeSlide === slide.id,
-                        'bg-slate-300' : activeSlide !== slide.id,
-                    }"
-                    x-on:click="activeSlide = slide.id"
-                    ></button>
-                </template>
-            </div>
         </div>
 
         <div class="max-w-6xl mx-auto h-96 mt-8">
             <span class="font-semibold text-2xl pl-4">Khusus Kamu Pengguna Baru</span>
-            <div class="flex w-full justify-evenly mt-4 p-4 gap-4">
+            <div class="flex w-full mt-4 p-4 gap-4">
                 @foreach ($products as $pd)
-                <div class="bg-slate-500 w-full h-80 rounded-lg">
-                    <img src="{{url($pd->image)}}" alt="">
-                    <div class="px-5 py-3">
+                <div class="w-58 rounded-lg flex flex-col items-center border-solid border-2 shadow-lg">
+                    <div class="w-[10rem] h-[10rem] overflow-hidden justify-center flex rounded-t-lg">
+                        <img class="object-cover h-auto w-full" src="{{url($pd->image)}}" alt="">
+                    </div>
+                    <div class="w-full px-2 py-2">
                         <h3 class="text-gray-700 uppercase">{{ $pd->product_name }}</h3>
                         <span class="mt-2 text-black">${{ $pd->prices }}</span>
                         <form action="{{Route('cart.store')}}" method="POST" enctype="multipart/form-data">

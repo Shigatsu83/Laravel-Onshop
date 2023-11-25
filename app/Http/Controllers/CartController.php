@@ -38,7 +38,7 @@ class CartController extends Controller
 
     public function removeCart(Request $request){
         \Cart::remove($request->id);
-        session()->flas('succes', 'item removed!');
+        session()->flash('succes', 'item removed!');
 
         return redirect()->route('cart.list');
     }
