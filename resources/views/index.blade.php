@@ -41,9 +41,9 @@
             </div>
         </div>
 
-        <div class="flex text-center items-center content-center w-full border-solid border-2 border-slate-100 rounded-lg">
+        <div class="flex text-center items-center content-center w-full border-solid border-2 border-blue-100 rounded-lg">
             <ion-icon name="search-outline" class="px-4"></ion-icon>
-            <input type="text" placeholder="Search.." class="w-full h-full py-1 px-1 outline">
+            <input type="text" placeholder="Search.." class="w-full h-full py-1 px-1 border-transparent">
         </div>
         <div class="flex gap-5 items-center content-center text-lg">
             <a href="#" class="w-8 h-8 mr-8"><ion-icon class="h-full w-full" name="cart-outline"></ion-icon></a>
